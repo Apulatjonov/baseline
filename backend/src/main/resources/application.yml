@@ -1,0 +1,36 @@
+server:
+  address: ${SERVER_ADDRESS:127.0.0.1}
+  port: ${PORT:8080}
+  error:
+    include-message: never
+spring:
+  datasource:
+    url: ${DATABASE_URL:jdbc:h2:file:./data/signal;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE}
+    username: ${DATABASE_USER:sa}
+    password: ${DATABASE_PASSWORD:}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+signal:
+  demo: ${DEMO_MODE:true}
+  collection-enabled: ${COLLECTION_ENABLED:false}
+  admin-user: ${ADMIN_USER:admin}
+  admin-password: ${ADMIN_PASSWORD:}
+  jwt-secret: ${JWT_SECRET:}
+  ai-url: ${AI_BASE_URL:}
+  ai-key: ${AI_API_KEY:}
+  ai-model: ${AI_MODEL:}
+  ai-fallback-url: ${AI_FALLBACK_URL:}
+  ai-fallback-key: ${AI_FALLBACK_KEY:}
+  ai-fallback-model: ${AI_FALLBACK_MODEL:}
+  telegram-token: ${TELEGRAM_BOT_TOKEN:}
+  telegram-chat: ${TELEGRAM_CHAT_ID:}

@@ -1,0 +1,22 @@
+[
+  {"id":"fed","name":"Federal Reserve","country":"US","language":"en","rssUrl":"https://www.federalreserve.gov/feeds/press_all.xml"},
+  {"id":"ecb","name":"European Central Bank","country":"EU","language":"en","rssUrl":"https://www.ecb.europa.eu/rss/press.html"},
+  {"id":"bis","name":"Bank for International Settlements","country":"CH","language":"en","rssUrl":"https://www.bis.org/doclist/all_pressrels.rss"},
+  {"id":"boj","name":"Bank of Japan","country":"JP","language":"en","rssUrl":"https://www.boj.or.jp/en/rss/whatsnew.xml"},
+  {"id":"eia","name":"US Energy Information Administration","country":"US","language":"en","rssUrl":"https://www.eia.gov/rss/todayinenergy.xml"},
+  {"id":"boe","name":"Bank of England","country":"GB","language":"en","rssUrl":"https://www.bankofengland.co.uk/rss/news"},
+  {"id":"boc","name":"Bank of Canada","country":"CA","language":"en","rssUrl":"https://www.bankofcanada.ca/content_type/press-releases/feed/"},
+  {"id":"cbr","name":"Bank of Russia","country":"RU","language":"ru","rssUrl":"https://www.cbr.ru/rss/RssPress"},
+  {"id":"nber","name":"National Bureau of Economic Research","country":"US","language":"en","rssUrl":"https://www.nber.org/rss/new.xml"},
+  {"id":"finextra","name":"Finextra","country":"GB","language":"en","sourceType":"SECONDARY","rssUrl":"https://www.finextra.com/rss/headlines.aspx"},
+  {"id":"snb","name":"Swiss National Bank","country":"CH","language":"en","rssUrl":"https://www.snb.ch/public/rss/en/pressrel"},
+  {"id":"cnb","name":"Czech National Bank","country":"CZ","language":"en","rssUrl":"https://www.cnb.cz/en/.content/rss-feed/rss-feed_tz.xml"},
+  {"id":"norges","name":"Norges Bank","country":"NO","language":"en","rssUrl":"https://www.norges-bank.no/en/rss-feeds/Press-releases---Norges-Bank/"},
+  {"id":"hkma","name":"Hong Kong Monetary Authority","country":"HK","language":"en","rssUrl":"https://www.hkma.gov.hk/eng/other-information/rss/rss_press-release.xml"},
+  {"id":"stlouisfed","name":"Federal Reserve Bank of St. Louis — FRED Blog","country":"US","language":"en","rssUrl":"https://fredblog.stlouisfed.org/feed/"},
+  {"id":"occ","name":"Office of the Comptroller of the Currency","country":"US","language":"en","rssUrl":"https://www.occ.gov/rss/occ_news.xml"},
+  {"id":"openai","name":"OpenAI — company announcements","country":"US","language":"en","reliability":0.8,"rssUrl":"https://openai.com/news/rss.xml"},
+  {"id":"nvidia","name":"NVIDIA — company announcements","country":"US","language":"en","reliability":0.8,"rssUrl":"https://blogs.nvidia.com/feed/"},
+  {"id":"riksbank","name":"Sveriges Riksbank","country":"SE","language":"en","rssUrl":"https://www.riksbank.se/en-gb/rss/press-releases/"},
+  {"id":"wto","name":"World Trade Organization","country":"GLOBAL","language":"en","rssUrl":"https://www.wto.org/library/rss/latest_news_e.xml"}
+]

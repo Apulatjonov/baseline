@@ -1,0 +1,67 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_DB: signal
+      POSTGRES_USER: signal
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:?Set DATABASE_PASSWORD in .env}
+    volumes: [postgres-data:/var/lib/postgresql/data]
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U signal -d signal"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+  backend:
+    build: ./backend
+    environment:
+      SERVER_ADDRESS: 0.0.0.0
+      DATABASE_URL: jdbc:postgresql://postgres:5432/signal
+      DATABASE_USER: signal
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DEMO_MODE: ${DEMO_MODE:-true}
+      COLLECTION_ENABLED: ${COLLECTION_ENABLED:-false}
+      ADMIN_USER: ${ADMIN_USER:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Set ADMIN_PASSWORD in .env}
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in .env}
+      AI_BASE_URL: ${AI_BASE_URL:-}
+      AI_API_KEY: ${AI_API_KEY:-}
+      AI_MODEL: ${AI_MODEL:-}
+      AI_FALLBACK_URL: ${AI_FALLBACK_URL:-}
+      AI_FALLBACK_KEY: ${AI_FALLBACK_KEY:-}
+      AI_FALLBACK_MODEL: ${AI_FALLBACK_MODEL:-}
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
+      TELEGRAM_CHAT_ID: ${TELEGRAM_CHAT_ID:-}
+    depends_on:
+      postgres: { condition: service_healthy }
+    restart: unless-stopped
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports: ["127.0.0.1:3000:80"]
+    depends_on: [backend]
+    restart: unless-stopped
+  redis:
+    image: redis:7-alpine
+    profiles: [extended]
+    restart: unless-stopped
+  rabbitmq:
+    image: rabbitmq:4-alpine
+    profiles: [extended]
+    environment:
+      RABBITMQ_DEFAULT_USER: signal
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-}
+    volumes: [rabbit-data:/var/lib/rabbitmq]
+  minio:
+    image: minio/minio:RELEASE.2025-09-07T16-13-09Z
+    profiles: [extended]
+    command: server /data
+    environment:
+      MINIO_ROOT_USER: signal
+      MINIO_ROOT_PASSWORD: ${MINIO_PASSWORD:-}
+    volumes: [minio-data:/data]
+volumes:
+  postgres-data:
+  rabbit-data:
+  minio-data:
